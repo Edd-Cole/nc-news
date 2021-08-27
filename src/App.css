@@ -31,3 +31,54 @@ Header {
     border: 2px black solid;
     height: 100px;
 }
+
+.NavBar {
+    border: 2px black solid;
+}
+
+.NavBar .nav {
+    position: relative;
+    text-decoration: none;
+    color: darkorange;
+}   
+
+.articleHomepage {
+    position: relative;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 120px;
+    box-sizing: border-box;
+}
+
+.homePage ul {
+    margin: 10px;
+    padding: 0px;
+}
+
+.articleVotesForm {
+    border: 2px solid black;
+    width: 50px;
+    position:inherit;
+    left: 275px; 
+    margin: 0px;
+}
+
+.articleTitle {
+    position: absolute;
+    margin: 0px 0px 0px 5px;
+    top: 0px;
+    left: 0px;
+    text-align: left;
+    width: 270px;
+    height: auto;
+    border: 2px black solid;
+}
+
+.articleTitle > h3 {
+    font-size: 1rem;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
