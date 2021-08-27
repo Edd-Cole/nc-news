@@ -1,5 +1,5 @@
 import './App.css';
-import {Router, Switch} from "react-router"
+import {Route, Switch} from "react-router-dom"
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Home from './components/Home';
@@ -10,11 +10,11 @@ function App() {
         <Header />
         <Nav />
         <Switch>
-            <Router path="/">
+            <Route path="/">
                 <Home />
-            </Router>
+            </Route>
         </Switch>
     </section>
-}
+  )}
 
 export default App;
