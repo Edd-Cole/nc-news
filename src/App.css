@@ -2,37 +2,32 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loginForm {
+    position: absolute;
+    width: auto;
+    right: 5px;
+    top: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loginForm > input, .loginForm > button {
+    width: 100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.companyName {
+    position: absolute;
+    left: 20px;
+    font-size: 2em;
 }
 
-.App-link {
-  color: #61dafb;
+.signup {
+    position: absolute;
+    right: 5px;
+    top: 78px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+Header {
+    display: block;
+    position:static;
+    border: 2px black solid;
+    height: 100px;
 }
