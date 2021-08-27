@@ -50,6 +50,9 @@ Header {
     border-radius: 10px;
     height: 120px;
     box-sizing: border-box;
+    box-shadow: -5px 5px 10px gray;
+    z-index: 0;
+    background-color: lightcyan;
 }
 
 .homePage ul {
@@ -58,10 +61,27 @@ Header {
 }
 
 .articleVotesForm {
-    border: 2px solid black;
-    width: 50px;
+    width: 60px;
+    height: 120px;
     position:inherit;
     left: 275px; 
+    margin: 0px;
+    box-sizing: border-box;
+    bottom: 5px;
+    z-index: 1;
+}
+
+.articleVotesForm input {
+    background-color: transparent;
+    border: transparent;
+    font-size: 2rem;
+    margin: 4px 0px 8px 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.articleVotesForm h3 {
+    padding: 0px;
     margin: 0px;
 }
 
@@ -73,12 +93,31 @@ Header {
     text-align: left;
     width: 270px;
     height: auto;
-    border: 2px black solid;
 }
 
 .articleTitle > h3 {
-    font-size: 1rem;
+    font-size:1rem;
     padding: 0px;
     margin-top: 5px;
     margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.articleTitle > p {
+    font-size: 0.8rem;
+    margin: 2px 1px;
+}
+
+.articleInfo {
+    position: absolute;
+    width: 270px;
+    margin: 2px 0px;
+    padding: 0px;
+    height: auto;
+    bottom: 0px;
+}
+
+.articleInfo > p {
+    font-size: 0.8rem;
+    margin: 0px;
 }
