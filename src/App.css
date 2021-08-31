@@ -42,6 +42,11 @@ Header {
     color: darkorange;
 }   
 
+.currentNav {
+    color: blue;
+    text-decoration: underline solid 3px blue;
+}
+
 .articleHomepage {
     position: relative;
     margin: 10px;
@@ -120,4 +125,9 @@ Header {
 .articleInfo > p {
     font-size: 0.8rem;
     margin: 0px;
+}
+
+.userAvatar {
+    width: 300px;
+    height: 300px;
 }

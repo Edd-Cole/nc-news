@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
     const [articles, setArticles] = useState([])
+    const [vote, setVote] = useState({article_id: 0, value: 0})
 
     const voteArticle = (event, article_id) => {
-        console.log(article_id);
         const newArticles = createNew(articles);
         if(event.target.value === "+") {
             console.log("+")
@@ -31,6 +31,21 @@ const Home = () => {
 }
 
     useEffect(() => {
+        fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${vote.article_id}`, {
+            method: "PATCH",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify({inc_votes: vote.value})
+        }).then(response => response.json())
+    }, [vote])
+
+    useEffect(() => {
         fetch("https://eddncnewsproject.herokuapp.com/api/articles?sort_by=created_at&limit=20&order=descending")
         .then(articles => {
             return articles.json();
@@ -49,7 +64,9 @@ const Home = () => {
                     return <section className="articleHomepage" key={article.article_id}>
                         <form className="articleVotesForm" onClick={(event) => {
                             event.preventDefault();
-                            voteArticle(event, article.article_id)}
+                            voteArticle(event, article.article_id)
+                            setVote({article_id: article.article_id, value: (event.target.value === "+" ? 1 : -1)})
+                            }
                             }>
                             <label>
                             <input type="submit" value="+"/>
@@ -74,5 +91,3 @@ const Home = () => {
 }
 
 export default Home;
-
-//patch the increased votes into the database
