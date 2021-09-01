@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-const {createNew} = require("../utils")
+import { Link } from "react-router-dom";
+import VotingComment from "./VotingComment";
+const {commentVote} = require("../utils")
 
-const Comments = ({article, setArticle, setVote}) => {
+const Comments = ({article, setArticle, setVote, commentValue, setCommentValue}) => {
     const {article_id} = useParams();
     const [comments, setComments] = useState([])
-    const [commentValue, setCommentValue] = useState({})
    
     useEffect(() => {
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}`)
@@ -32,50 +33,29 @@ const Comments = ({article, setArticle, setVote}) => {
         }).then(response => response.json())
     }, [comments])
 
-    const commentVote = (comment_id, value) => {
-        const newComments = createNew(comments)
-        let commentsArray;
-        if(value === "+") {
-        commentsArray = newComments.map(comment => {
-            if(comment.comment_id === comment_id) {
-                comment.votes += 1;
-            }
-            return comment
-        })
-        } else if (value === "-") {
-            commentsArray = newComments.map(comment => {
-                if(comment.comment_id === comment_id) {
-                    comment.votes -= 1;
-                }
-                return comment;
-            })
-        }
-        setComments(commentsArray)
-    }
+    useEffect(() => {
+        fetch(`https://eddncnewsproject.herokuapp.com/api/comments/${commentValue.comment_id}`, {
+            method: "PATCH",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify({inc_votes: commentValue.value})
+        }).then(response => response.json())
+    }, [commentValue])
 
     return (
         <section>
             <h2>{article.title}</h2>
+            <Link to={`/articles/${article_id}`}>Back to Article</Link>
             <hr />
             {comments.map(comment => {
                 return <section key={comment.comment_id} className="commentSection">
-                <form className="commentVotesForm" onClick={(event) => {
-                    event.preventDefault()
-                    commentVote(comment.comment_id, event.target.value);
-                    setCommentValue({comment_id: comment.comment_id, value: (event.target.value === "+" ? 1 : -1)})
-                    }}>
-                <label>
-                    <input type="submit" value="+"/>
-                </label>
-                <h3>{comment.votes}</h3>
-                <label>
-                    <input type="submit" value="-" />
-                </label>
-                </form>
-                    <section className="commentInfo">
-                    <h3>{comment.author}</h3>
-                    <p>{comment.body}</p>
-                    </section>
+                <VotingComment comment={comment} comments={comments} setComments={setComments} setCommentValue={setCommentValue}/>
                 </section>
             })}
         </section>

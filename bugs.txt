@@ -1,1 +1,5 @@
 1. Article vote counter increments when switiching between solo article and home page
+2. Comment vote counter will increment but does not patch to the database
+3. Comment vote counter not vertically centred
+4. Comment vote counter increments when switching between article and its comments
+5. Incrementing a vote on the comments section leads to returning back only the comment and losing the rest

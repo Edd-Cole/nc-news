@@ -11,8 +11,9 @@ import Comments from './components/Comment';
 
 function App() {
     const [articles, setArticles] = useState([])
-    let [article, setArticle] = useState({})
+    const [article, setArticle] = useState({})
     const [vote, setVote] = useState({article_id: 0, value: 0})
+    const [commentValue, setCommentValue] = useState({comment_id: 0, value: 0})
 
   return (
     <section className="App">
@@ -29,10 +30,10 @@ function App() {
                 <Username />
             </Route>
             <Route exact path="/articles/:article_id">
-                <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote}/>
+                <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue}/>
             </Route>
             <Route exact path="/articles/:article_id/comments">
-                <Comments articles={articles} article={article} setArticle={setArticle} setVote={setVote}/>
+                <Comments articles={articles} article={article} setArticle={setArticle} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue}/>
             </Route>
         </Switch>
     </section>

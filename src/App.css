@@ -65,7 +65,7 @@ Header {
     padding: 0px;
 }
 
-.articleVotesForm {
+.articleHomepage .articleVotesForm {
     width: 60px;
     height: 120px;
     position:inherit;
@@ -139,7 +139,6 @@ Header {
 .commentSection {
     position:static;
     border: black solid 1px;
-    height: fit-content;
 }
 
 .commentVotesForm {
@@ -162,4 +161,31 @@ Header {
 .commentInfo {
     border: 1px solid black;
     width: 90%;
+}
+
+.articleSection {
+padding: 0px 10px;
+}
+
+.articleHeading {
+    margin-left: 10px;
+    text-align: left;
+    width: 300px;
+}
+
+.articlesTop {
+    display: inline-flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.articleTop > .articleVotesForm {
+    position: absolute;
+    top: 161px;
+    right: 20px;
+}
+
+.articleFooterInfo {
+    display: inline-flex;
+    text-align: center;
 }

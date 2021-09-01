@@ -23,8 +23,28 @@ const voteArticle = (event, articles, article_id, setArticles, setVote, article)
             return article;
         })
     }
-    // setVote({article_id: article.article_id, value: (event.target.value === "+" ? 1 : -1)})
+    setVote({article_id: article.article_id, value: (event.target.value === "+" ? 1 : -1)})
     setArticles(newArticles)
 }
 
-export {createNew, voteArticle};
+const commentVote = (comment_id, value, comments, setComments, comment) => {
+    const newComments = createNew(comments)
+    if(value === "+") {
+    newComments.map(comment => {
+        if(comment.comment_id === comment_id) {
+            comment.votes += 1;
+        }
+        return comment
+    })
+    } else if (value === "-") {
+        newComments.map(comment => {
+            if(comment.comment_id === comment_id) {
+                comment.votes -= 1;
+            }
+            return comment;
+        })
+    }
+    setComments(newComments)
+}
+
+export {createNew, voteArticle, commentVote};
