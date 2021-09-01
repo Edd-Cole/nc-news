@@ -27,7 +27,7 @@ const voteArticle = (event, articles, article_id, setArticles, setVote, article)
     setArticles(newArticles)
 }
 
-const commentVote = (comment_id, value, comments, setComments, comment) => {
+const commentVote = (comment_id, value, comments, setComments) => {
     const newComments = createNew(comments)
     if(value === "+") {
     newComments.map(comment => {

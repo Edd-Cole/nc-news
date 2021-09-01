@@ -66,7 +66,7 @@ const Article = ({vote, setVote, article, setArticle, setCommentValue, commentVa
         <p>{article.author} - {article.created_at}</p>
         <p>{article.body}</p>
         <hr></hr>
-        <span className="articleFooterInfo"><Link to={`/articles/${article_id}/comments`}>{article.comment_count} comments </Link> &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; <Link>t/{article.topic}</Link></span>
+        <span className="articleFooterInfo"><Link to={`/articles/${article_id}/comments`}>{article.comment_count} comments </Link> &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; <Link to={`/articles?topic=${article.topic}`}>t/{article.topic}</Link></span>
         <section className="articleComments">
         <h3>Top Comment:</h3>
         <hr></hr>

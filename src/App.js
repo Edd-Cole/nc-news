@@ -8,6 +8,7 @@ import Users from "./components/Users"
 import Username from './components/Username';
 import Article from "./components/Article"
 import Comments from './components/Comment';
+import Topics from './components/Topics';
 
 function App() {
     const [articles, setArticles] = useState([])
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route exact path="/articles/:article_id/comments">
                 <Comments articles={articles} article={article} setArticle={setArticle} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue}/>
+            </Route>
+            <Route exact path="/topics">
+                <Topics />
             </Route>
         </Switch>
     </section>
