@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
-import { createNew, voteArticle } from "../utils";
 import { Link } from "react-router-dom";
+import Voting from "./Voting"
 
-const Home = ({articles, setArticles}) => {
-    const [vote, setVote] = useState({article_id: 0, value: 0})
+const Home = ({articles, setArticles, vote, setVote, article}) => {
+
+    useEffect(() => {
+        fetch("https://eddncnewsproject.herokuapp.com/api/articles?sort_by=created_at&limit=20&order=descending")
+        .then(articles => {
+            return articles.json();
+        })
+        .then(({articles}) => {
+            return setArticles(articles);
+        })
+        setVote({article_id: article.article_id, value: 0})
+    }, [])
 
     useEffect(() => {
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${vote.article_id}`, {
@@ -20,16 +30,6 @@ const Home = ({articles, setArticles}) => {
         }).then(response => response.json())
     }, [vote])
 
-    useEffect(() => {
-        fetch("https://eddncnewsproject.herokuapp.com/api/articles?sort_by=created_at&limit=20&order=descending")
-        .then(articles => {
-            return articles.json();
-        })
-        .then(({articles}) => {
-            return setArticles(articles);
-        })
-    }, [])
-
     return (
         <section className="homePage">
             <ul>
@@ -37,20 +37,7 @@ const Home = ({articles, setArticles}) => {
                     const commentLink = `/articles/${article.article_id}/comments`;
                     const userLink = `/users/${article.author}`
                     return <section className="articleHomepage" key={article.article_id}>
-                        <form className="articleVotesForm" onClick={(event) => {
-                            event.preventDefault();
-                            voteArticle(event, articles, article.article_id, setArticles)
-                            setVote({article_id: article.article_id, value: (event.target.value === "+" ? 1 : -1)})
-                            }
-                            }>
-                            <label>
-                            <input type="submit" value="+"/>
-                            </label>
-                            <h3>{article.votes}</h3>
-                            <label>
-                                <input type="submit" value="-" />
-                            </label>
-                        </form>
+                        <Voting article={article} setVote={setVote} articles={articles} setArticles={setArticles} vote={vote}/>
                         <Link className="articleLink" to={`/articles/${article.article_id}`}>
                         <section className="articleTitle">
                             <h3>{article.title}</h3>

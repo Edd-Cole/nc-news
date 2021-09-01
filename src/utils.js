@@ -4,8 +4,8 @@ const createNew = (arrayOfObjects) => {
     })
 }
 
-const voteArticle = (event, articles, article_id, setArticles) => {
-    const newArticles = createNew(articles);
+const voteArticle = (event, articles, article_id, setArticles, setVote, article) => {
+    let newArticles = createNew(articles);
     if(event.target.value === "+") {
         newArticles.map(article => {
             if(article_id === article.article_id) {
@@ -22,8 +22,9 @@ const voteArticle = (event, articles, article_id, setArticles) => {
             }
             return article;
         })
-}
-setArticles(newArticles)
+    }
+    // setVote({article_id: article.article_id, value: (event.target.value === "+" ? 1 : -1)})
+    setArticles(newArticles)
 }
 
 export {createNew, voteArticle};

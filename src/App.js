@@ -7,9 +7,12 @@ import Home from './components/Home';
 import Users from "./components/Users"
 import Username from './components/Username';
 import Article from "./components/Article"
+import Comments from './components/Comment';
 
 function App() {
     const [articles, setArticles] = useState([])
+    let [article, setArticle] = useState({})
+    const [vote, setVote] = useState({article_id: 0, value: 0})
 
   return (
     <section className="App">
@@ -17,7 +20,7 @@ function App() {
         <Nav />
         <Switch>
             <Route exact path="/">
-                <Home articles={articles} setArticles={setArticles}/>
+                <Home articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article}/>
             </Route>
             <Route exact path="/users">
                 <Users />
@@ -26,10 +29,16 @@ function App() {
                 <Username />
             </Route>
             <Route exact path="/articles/:article_id">
-                <Article articles={articles} setArticles={setArticles}/>
+                <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote}/>
+            </Route>
+            <Route exact path="/articles/:article_id/comments">
+                <Comments articles={articles} article={article} setArticle={setArticle} setVote={setVote}/>
             </Route>
         </Switch>
     </section>
   )}
 
 export default App;
+
+//Mulitple requests being sent out on voting trying to patch the database with incremental votes
+//article component won't rerender when vote button clicked

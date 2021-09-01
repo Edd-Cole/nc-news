@@ -1,11 +1,12 @@
+import { useEffect } from "react"
 const {voteArticle}= require("../utils.js")
 
-const Voting = ({articles}) => {
+const Voting = ({articles, setArticles, article, setVote}) => {
+
     return (
         <form className="articleVotesForm" onClick={(event) => {
             event.preventDefault();
-            voteArticle(event, articles, article.article_id, setArticles)
-            setVote({article_id: article.article_id, value: (event.target.value === "+" ? 1 : -1)})
+            voteArticle(event, articles, article.article_id, setArticles, setVote, article)
             }
             }>
             <label>

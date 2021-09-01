@@ -1,0 +1,1 @@
+1. Article vote counter increments when switiching between solo article and home page
