@@ -47,4 +47,9 @@ const commentVote = (comment_id, value, comments, setComments) => {
     setComments(newComments)
 }
 
-export {createNew, voteArticle, commentVote};
+const extractSearchValue =  (search) => {
+    const index = search.indexOf("=");
+    return search.slice(index + 1)
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue};

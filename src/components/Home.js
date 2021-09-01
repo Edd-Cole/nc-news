@@ -1,11 +1,21 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { extractSearchValue } from "../utils";
 import Voting from "./Voting"
 
-const Home = ({articles, setArticles, vote, setVote, article}) => {
+const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSearchQuery}) => {
+    const {search} = useLocation()
+    if(search) {
+        let value = extractSearchValue(search);
+        setSearchQuery("&topic=" + value)
+    } else {
+        setSearchQuery("")
+    }
+    console.log(searchQuery)
 
     useEffect(() => {
-        fetch("https://eddncnewsproject.herokuapp.com/api/articles?sort_by=created_at&limit=20&order=descending")
+        fetch(`https://eddncnewsproject.herokuapp.com/api/articles?sort_by=created_at&limit=20&order=descending${searchQuery}`)
         .then(articles => {
             return articles.json();
         })
@@ -13,7 +23,7 @@ const Home = ({articles, setArticles, vote, setVote, article}) => {
             return setArticles(articles);
         })
         setVote({article_id: article.article_id, value: 0})
-    }, [])
+    }, [searchQuery])
 
     useEffect(() => {
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${vote.article_id}`, {
@@ -45,7 +55,7 @@ const Home = ({articles, setArticles, vote, setVote, article}) => {
                         </section>
                         </Link>
                         <section className="articleInfo">
-                            <p><Link to={`/articles?topic=${article.topic}`}>t/{article.topic}</Link> &nbsp;-&nbsp; 
+                            <p><Link to={`/?topic=${article.topic}`}>t/{article.topic}</Link> &nbsp;-&nbsp; 
                             {article.comment_count} <Link to={commentLink}>Comments</Link> &nbsp;-&nbsp; 
                             <Link to={userLink}>{article.author.length < 10 ? article.author : article.author.slice(0,6) + "..."}</Link> &nbsp;- &nbsp;
                             {article.created_at.slice(0,10)}</p>

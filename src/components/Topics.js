@@ -9,7 +9,7 @@ const Topics = () => {
         .then(response => response.json())
         .then(topics => setTopics(topics.topics))
     }, [])
-    
+
     return (
         <section>
             <h2>Topics</h2>
@@ -17,7 +17,7 @@ const Topics = () => {
             {topics.map(topic => {
                 return (
                     <section>
-                    <h3><Link to={`/articles?topic=${topic.slug}`}>{topic.slug}</Link></h3>
+                    <h3><Link to={`/?topic=${topic.slug}`}>{topic.slug}</Link></h3>
                     <p>{topic.description}</p>
                     <hr></hr>
                     </section>

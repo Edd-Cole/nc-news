@@ -9,12 +9,14 @@ import Username from './components/Username';
 import Article from "./components/Article"
 import Comments from './components/Comment';
 import Topics from './components/Topics';
+import ArticlesByTopic from './components/ArticlesByTopic';
 
 function App() {
     const [articles, setArticles] = useState([])
     const [article, setArticle] = useState({})
     const [vote, setVote] = useState({article_id: 0, value: 0})
     const [commentValue, setCommentValue] = useState({comment_id: 0, value: 0})
+    const [searchQuery, setSearchQuery] = useState("")
 
   return (
     <section className="App">
@@ -22,7 +24,7 @@ function App() {
         <Nav />
         <Switch>
             <Route exact path="/">
-                <Home articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article}/>
+                <Home articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
             </Route>
             <Route exact path="/users">
                 <Users />
