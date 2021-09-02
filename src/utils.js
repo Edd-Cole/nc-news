@@ -4,7 +4,8 @@ const createNew = (arrayOfObjects) => {
     })
 }
 
-const voteArticle = (event, articles, article_id, setArticles, setVote, article) => {
+const voteArticle = async(event, articles, article_id, setArticles, setVote, article) => {
+    setVote({article_id: article.article_id, value: (event.target.value === "+" ? 1 : -1)})
     let newArticles = createNew(articles);
     if(event.target.value === "+") {
         newArticles.map(article => {
@@ -23,7 +24,6 @@ const voteArticle = (event, articles, article_id, setArticles, setVote, article)
             return article;
         })
     }
-    setVote({article_id: article.article_id, value: (event.target.value === "+" ? 1 : -1)})
     setArticles(newArticles)
 }
 
@@ -47,9 +47,24 @@ const commentVote = (comment_id, value, comments, setComments) => {
     setComments(newComments)
 }
 
-const extractSearchValue =  (search) => {
+const extractSearchValue = (search) => {
     const index = search.indexOf("=");
     return search.slice(index + 1)
 }
 
-export {createNew, voteArticle, commentVote, extractSearchValue};
+const postNewUser = (firstName, lastName, username, email, avatarURL) => {
+    return fetch("https://eddncnewsproject.herokuapp.com/api/users", {
+        method: "POST",
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({name: `${firstName} ${lastName}`, username, email, avatar_url: avatarURL})
+      }).then((response) => response.json())
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser};

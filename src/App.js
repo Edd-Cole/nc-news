@@ -9,7 +9,9 @@ import Username from './components/Username';
 import Article from "./components/Article"
 import Comments from './components/Comment';
 import Topics from './components/Topics';
-import ArticlesByTopic from './components/ArticlesByTopic';
+import LoginPage from './components/LoginPage';
+import CreateAccount from './components/CreateAccount';
+import AccountCreationSuccess from './components/AccountCreationSuccess';
 
 function App() {
     const [articles, setArticles] = useState([])
@@ -18,6 +20,7 @@ function App() {
     const [commentValue, setCommentValue] = useState({comment_id: 0, value: 0})
     const [searchQuery, setSearchQuery] = useState("")
     const [page, setPage] = useState(1);
+    const [username, setUsername] = useState("");
 
   return (
     <section className="App">
@@ -29,6 +32,12 @@ function App() {
             </Route>
             <Route exact path="/users">
                 <Users />
+            </Route>
+            <Route exact path="/users/create_an_account">
+                <CreateAccount username={username} setUsername={setUsername}/>
+            </Route>
+            <Route exact path="/users/create_account_success">
+                <AccountCreationSuccess username={username}/>
             </Route>
             <Route exact path="/users/:username">
                 <Username />
@@ -42,11 +51,11 @@ function App() {
             <Route exact path="/topics">
                 <Topics />
             </Route>
+            <Route exact path="/loginpage">
+                <LoginPage />
+            </Route>
         </Switch>
     </section>
   )}
 
 export default App;
-
-//Mulitple requests being sent out on voting trying to patch the database with incremental votes
-//article component won't rerender when vote button clicked

@@ -32,6 +32,15 @@ Header {
     height: 100px;
 }
 
+Header p {
+    position: absolute;
+    top: 45px;
+    margin-left: 20px;
+    width: 150px;
+    text-align: left;
+    font-size: 14px;
+}
+
 .NavBar {
     border: 2px black solid;
 }
