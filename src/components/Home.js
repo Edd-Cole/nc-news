@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { extractSearchValue } from "../utils";
+import NextPage from "./NextPage";
+import PrevPage from "./PrevPage";
 import Voting from "./Voting"
 
-const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSearchQuery}) => {
+const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSearchQuery, page, setPage}) => {
     const {search} = useLocation()
     if(search) {
         let value = extractSearchValue(search);
@@ -12,10 +14,9 @@ const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSe
     } else {
         setSearchQuery("")
     }
-    console.log(searchQuery)
-
+    
     useEffect(() => {
-        fetch(`https://eddncnewsproject.herokuapp.com/api/articles?sort_by=created_at&limit=20&order=descending${searchQuery}`)
+        fetch(`https://eddncnewsproject.herokuapp.com/api/articles?sort_by=created_at&limit=20&order=descending&page=${page}${searchQuery}`)
         .then(articles => {
             return articles.json();
         })
@@ -23,7 +24,7 @@ const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSe
             return setArticles(articles);
         })
         setVote({article_id: article.article_id, value: 0})
-    }, [searchQuery])
+    }, [searchQuery, page])
 
     useEffect(() => {
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${vote.article_id}`, {
@@ -63,6 +64,8 @@ const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSe
                     </section>
                 })}
             </ul>
+            <PrevPage page={page} setPage={setPage}/>
+            <NextPage setPage={setPage} />
         </section>
     )
 }

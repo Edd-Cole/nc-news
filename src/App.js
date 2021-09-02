@@ -17,14 +17,15 @@ function App() {
     const [vote, setVote] = useState({article_id: 0, value: 0})
     const [commentValue, setCommentValue] = useState({comment_id: 0, value: 0})
     const [searchQuery, setSearchQuery] = useState("")
+    const [page, setPage] = useState(1);
 
   return (
     <section className="App">
         <Header />
-        <Nav />
+        <Nav setPage={setPage}/>
         <Switch>
             <Route exact path="/">
-                <Home articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+                <Home articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery} page={page} setPage={setPage}/>
             </Route>
             <Route exact path="/users">
                 <Users />
