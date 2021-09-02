@@ -40,7 +40,7 @@ function App() {
                 <AccountCreationSuccess username={username}/>
             </Route>
             <Route exact path="/users/:username">
-                <Username />
+                <Username articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery} page={page} setPage={setPage}/>
             </Route>
             <Route exact path="/articles/:article_id">
                 <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} setPage={setPage}/>
