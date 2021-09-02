@@ -26,10 +26,10 @@ const CreateAccount = ({username, setUsername}) => {
                     }
                 })}}>
                 <label for="firstName">First Name:* </label>
-                <input id="firstName" className="createNewUserInput" type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)} placeholder="Alex" required />
+                <input id="firstName" className="createNewUserInput" type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)} placeholder="John" required />
                 <br />
                 <label for="lastName">Last Name:* </label>
-                <input id="lastName" className="createNewUserInput" type="text" value={lastName} onChange={(event) => setLastName(event.target.value)} placeholder="Jones" required />
+                <input id="lastName" className="createNewUserInput" type="text" value={lastName} onChange={(event) => setLastName(event.target.value)} placeholder="Smith" required />
                 <br />
                 <label for="userName">Username:* </label>
                 <input id="userName" className="createNewUserInput" type="text" value={username} onChange={(event) => setUsername(event.target.value)} placeholder="SadBalloon&amp;YodellingPickle" required />
