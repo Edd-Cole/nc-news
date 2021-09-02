@@ -34,10 +34,10 @@ function App() {
                 <Username />
             </Route>
             <Route exact path="/articles/:article_id">
-                <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue}/>
+                <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} setPage={setPage}/>
             </Route>
             <Route exact path="/articles/:article_id/comments">
-                <Comments articles={articles} article={article} setArticle={setArticle} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue}/>
+                <Comments articles={articles} article={article} setArticle={setArticle} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} page={page} setPage={setPage}/>
             </Route>
             <Route exact path="/topics">
                 <Topics />

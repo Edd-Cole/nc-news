@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import NextPage from "./NextPage";
+import PrevPage from "./PrevPage";
 import VotingComment from "./VotingComment";
-const {commentVote} = require("../utils")
 
-const Comments = ({article, setArticle, setVote, commentValue, setCommentValue}) => {
+const Comments = ({article, setArticle, setVote, commentValue, setCommentValue, page, setPage}) => {
     const {article_id} = useParams();
     const [comments, setComments] = useState([])
    
@@ -12,11 +13,11 @@ const Comments = ({article, setArticle, setVote, commentValue, setCommentValue})
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}`)
         .then(response => response.json())
         .then(article => setArticle(article))
-        fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}/comments`)
+        fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}/comments?limit=20&page=${page}`)
         .then(response => response.json())
         .then(({comments}) => setComments(comments))
         setVote({article_id: article.article_id, value: 0})
-    }, [])
+    }, [page])
 
     useEffect(() => {
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}/comments`, {
@@ -58,6 +59,8 @@ const Comments = ({article, setArticle, setVote, commentValue, setCommentValue})
                 <VotingComment comment={comment} comments={comments} setComments={setComments} setCommentValue={setCommentValue}/>
                 </section>
             })}
+            <PrevPage page={page} setPage={setPage}/>
+            <NextPage setPage={setPage} />
         </section>
     )
 }

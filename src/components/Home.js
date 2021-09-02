@@ -57,7 +57,7 @@ const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSe
                         </Link>
                         <section className="articleInfo">
                             <p><Link to={`/?topic=${article.topic}`}>t/{article.topic}</Link> &nbsp;-&nbsp; 
-                            {article.comment_count} <Link to={commentLink}>Comments</Link> &nbsp;-&nbsp; 
+                            {article.comment_count} <Link to={commentLink} onClick={() => setPage(1)}>Comments</Link> &nbsp;-&nbsp; 
                             <Link to={userLink}>{article.author.length < 10 ? article.author : article.author.slice(0,6) + "..."}</Link> &nbsp;- &nbsp;
                             {article.created_at.slice(0,10)}</p>
                         </section>
