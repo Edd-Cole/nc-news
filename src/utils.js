@@ -98,4 +98,20 @@ const postNewArticle = (title, body, topic, author) => {
     .then(response => response.json())
 }
 
-export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle};
+const postNewComment = (author, article_id, body) => {
+    return fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}/comments`, {
+        method: "POST",
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({author, article_id, body})
+    })
+    .then(response => response.json())
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment};

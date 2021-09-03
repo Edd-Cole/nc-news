@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom"
+import AddComment from "./AddComment"
 import Voting from "./Voting"
 import VotingComment from "./VotingComment"
-const {commentVote} = require("../utils")
 
 const Article = ({vote, setVote, article, setArticle, setCommentValue, commentValue, setPage}) => {
     const {article_id} = useParams();
-    console.log(article_id)
     let [comment, setComment] = useState({});
-
-    // console.log(article)
 
     if(Array.isArray(comment)) [comment] = comment
 
@@ -20,7 +17,6 @@ const Article = ({vote, setVote, article, setArticle, setCommentValue, commentVa
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}`)
         .then(response => response.json())
         .then(article => {
-            // console.log(article)
             setArticle(article)})
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}/comments?limit=1`)
         .then(response => response.json())
@@ -77,8 +73,10 @@ const Article = ({vote, setVote, article, setArticle, setCommentValue, commentVa
         <section className="articleComments">
         <h3>Top Comment:</h3>
         <hr></hr>
-               <VotingComment comment={comment} comments={[comment]} setComments={setComment} setCommentValue={setCommentValue}/>
-                    <br></br>
+        <VotingComment comment={comment} comments={[comment]} setComments={setComment} setCommentValue={setCommentValue}/>
+        <br></br>
+        <AddComment article_id={article_id}/>
+        <br /><br />
         <Link to={`/articles/${article_id}/comments`}>More comments...</Link>
         <br></br>
         </section>

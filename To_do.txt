@@ -7,7 +7,7 @@
 
 - Limit the next page when no more results to show
 
-- Edit comment button
+- Edit comment button   
 - Edit article comment
 - Edit user
 - Edit a topic
@@ -17,3 +17,4 @@
 - Get all comments in database
 - Deploy site
 - Bind stuff to a logged in user
+- change favicon and title on tab

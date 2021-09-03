@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import AddComment from "./AddComment";
 import NextPage from "./NextPage";
 import PrevPage from "./PrevPage";
 import VotingComment from "./VotingComment";
@@ -52,6 +53,7 @@ const Comments = ({article, setArticle, setVote, commentValue, setCommentValue, 
     return (
         <section>
             <h2>{article.title}</h2>
+            <AddComment article_id={article_id}/><br /><br />
             <Link to={`/articles/${article_id}`}>Back to Article</Link>
             <hr />
             {comments.map(comment => {
