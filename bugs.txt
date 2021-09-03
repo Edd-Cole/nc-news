@@ -1,4 +1,5 @@
 1. Article vote counter increments when switiching between solo article and home page --> extract useEffect for patch into voteArticle
-2. Comment vote counter will increment but does not patch to the database
+2. Comment vote counter will increment but does not patch to the database - Done
 3. Comment vote counter not vertically centred
 4. Comment vote counter increments when switching between article and its comments --> extract useEffect for patch into commentVote
+5. After new topic created, article button doesn't refresh all articles

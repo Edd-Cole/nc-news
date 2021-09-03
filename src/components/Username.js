@@ -25,6 +25,7 @@ const Username = ({articles, setArticles, vote, setVote, article, searchQuery, s
                 <br></br>
                 <img className="userAvatar" src={user.avatar_url} alt={user.username}></img>
                 <br />
+                <h3>Articles by {username}</h3>
                 {userArticles.map(article => {
                     const commentLink = `/articles/${article.article_id}/comments`;
                     const userLink = `/users/${article.author}`

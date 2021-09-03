@@ -3,10 +3,10 @@
 - CSS for different screen sizes - large mobile, tablet, desktop
 - Add new comment to article
 - Add new article
-- Add new user
-- Add new topic
+
+
 - Limit the next page when no more results to show
-- Replace Login at top with a button that redirects to login page
+
 - Edit comment button
 - Edit article comment
 - Edit user
@@ -16,3 +16,4 @@
 - Delete a comment
 - Get all comments in database
 - Deploy site
+- Bind stuff to a logged in user

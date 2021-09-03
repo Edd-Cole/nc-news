@@ -13,6 +13,7 @@ const Topics = () => {
     return (
         <section>
             <h2>Topics</h2>
+            <Link to="/topics/create_new_topic">Create a new Topic</Link>
             <hr></hr>
             {topics.map(topic => {
                 return (

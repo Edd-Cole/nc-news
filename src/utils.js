@@ -67,4 +67,19 @@ const postNewUser = (firstName, lastName, username, email, avatarURL) => {
       }).then((response) => response.json())
 }
 
-export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser};
+const postNewTopic = (slug, description) => {
+    return fetch("https://eddncnewsproject.herokuapp.com/api/topics", {
+        method: "POST",
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({slug, description})
+    })
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic};

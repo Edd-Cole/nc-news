@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { extractSearchValue } from "../utils";
+import AddArticle from "./AddArticle";
 import NextPage from "./NextPage";
 import PrevPage from "./PrevPage";
 import Voting from "./Voting"
@@ -43,6 +44,7 @@ const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSe
 
     return (
         <section className="homePage">
+            <AddArticle />
             <ul>
                 {articles.map(article => {
                     const commentLink = `/articles/${article.article_id}/comments`;

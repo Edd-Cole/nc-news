@@ -12,6 +12,7 @@ import Topics from './components/Topics';
 import LoginPage from './components/LoginPage';
 import CreateAccount from './components/CreateAccount';
 import AccountCreationSuccess from './components/AccountCreationSuccess';
+import CreateTopic from './components/CreateTopic';
 
 function App() {
     const [articles, setArticles] = useState([])
@@ -50,6 +51,9 @@ function App() {
             </Route>
             <Route exact path="/topics">
                 <Topics />
+            </Route>
+            <Route exact path="/topics/create_new_topic">
+                <CreateTopic />
             </Route>
             <Route exact path="/loginpage">
                 <LoginPage />
