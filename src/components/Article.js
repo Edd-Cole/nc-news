@@ -7,9 +7,10 @@ const {commentVote} = require("../utils")
 
 const Article = ({vote, setVote, article, setArticle, setCommentValue, commentValue, setPage}) => {
     const {article_id} = useParams();
+    console.log(article_id)
     let [comment, setComment] = useState({});
 
-    console.log(commentValue)
+    // console.log(article)
 
     if(Array.isArray(comment)) [comment] = comment
 
@@ -18,11 +19,17 @@ const Article = ({vote, setVote, article, setArticle, setCommentValue, commentVa
     useEffect(() => {
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}`)
         .then(response => response.json())
-        .then(article => setArticle(article))
+        .then(article => {
+            // console.log(article)
+            setArticle(article)})
         fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}/comments?limit=1`)
         .then(response => response.json())
         .then(comment => {
-            setComment(comment.comments[0])
+            if(comment.code !== 400){
+                setComment(comment.comments[0])
+            } else {
+                setComment({author: "", body: "No comments"})
+            }
         })
     },[])
     

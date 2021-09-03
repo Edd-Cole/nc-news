@@ -13,8 +13,10 @@ import LoginPage from './components/LoginPage';
 import CreateAccount from './components/CreateAccount';
 import AccountCreationSuccess from './components/AccountCreationSuccess';
 import CreateTopic from './components/CreateTopic';
+import CreateArticle from './components/CreateArticle';
 
 function App() {
+    const [currentUser, setCurrentUser] = useState("grumpy19")
     const [articles, setArticles] = useState([])
     const [article, setArticle] = useState({})
     const [vote, setVote] = useState({article_id: 0, value: 0})
@@ -42,6 +44,9 @@ function App() {
             </Route>
             <Route exact path="/users/:username">
                 <Username articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery} page={page} setPage={setPage}/>
+            </Route>
+            <Route exact path="/articles/create_new_article">
+                <CreateArticle currentUser={currentUser}/>
             </Route>
             <Route exact path="/articles/:article_id">
                 <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} setPage={setPage}/>

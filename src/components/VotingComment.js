@@ -1,6 +1,7 @@
 const {commentVote} = require("../utils")
 
 const VotingComment = ({comment, comments, setComments, setCommentValue}) => {
+    if(comment === undefined || comment.votes) return <p>No comments yet, be the first...</p>
 return  (
 <section className="commentSection">
 <form className="commentVotesForm" onClick={(event) => {
