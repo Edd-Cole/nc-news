@@ -15,6 +15,9 @@ import AccountCreationSuccess from './components/AccountCreationSuccess';
 import CreateTopic from './components/CreateTopic';
 import CreateArticle from './components/CreateArticle';
 import CreateComment from './components/CreateComment';
+import LoggedInAsUser from './components/LoggedInAsUser';
+import NullPage from './components/NullPage';
+import UpdateComment from './components/UpdateComment';
 
 function App() {
     const [currentUser, setCurrentUser] = useState("grumpy19")
@@ -28,7 +31,7 @@ function App() {
 
   return (
     <section className="App">
-        <Header />
+        <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         <Nav setPage={setPage}/>
         <Switch>
             <Route exact path="/">
@@ -47,25 +50,35 @@ function App() {
                 <Username articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery} page={page} setPage={setPage}/>
             </Route>
             <Route exact path="/articles/create_new_article">
-                <CreateArticle currentUser={currentUser}/>
+                {/* <LoggedInAsUser currentUser={currentUser}> */}
+                    <CreateArticle currentUser={currentUser}/>
+                {/* </LoggedInAsUser> */}
             </Route>
             <Route exact path="/articles/:article_id/comments/create_new_comment">
-                <CreateComment currentUser={currentUser}/>
+                {/* <LoggedInAsUser currentUser={currentUser}> */}
+                    <CreateComment currentUser={currentUser}/>
+                {/* </LoggedInAsUser> */}
             </Route>
             <Route exact path="/articles/:article_id">
                 <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} setPage={setPage}/>
             </Route>
             <Route exact path="/articles/:article_id/comments">
-                <Comments articles={articles} article={article} setArticle={setArticle} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} page={page} setPage={setPage}/>
+                <Comments currentUser={currentUser} articles={articles} article={article} setArticle={setArticle} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} page={page} setPage={setPage}/>
             </Route>
             <Route exact path="/topics">
-                <Topics />
+                <Topics currentUser={currentUser}/>
             </Route>
             <Route exact path="/topics/create_new_topic">
-                <CreateTopic />
+                    <CreateTopic currentUser={currentUser}/>
             </Route>
             <Route exact path="/loginpage">
-                <LoginPage />
+                <LoggedInAsUser currentUser={currentUser}>
+                    <NullPage />
+                    <LoginPage setCurrentUser={setCurrentUser}/>
+                </LoggedInAsUser>
+            </Route>
+            <Route exact path="/comments/:comment_id/edit">
+                <UpdateComment />
             </Route>
         </Switch>
     </section>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import { postNewTopic } from "../utils";
 
-const CreateTopic = () => {
+const CreateTopic = ({currentUser}) => {
     const [slug, setSlug] = useState("");
     const [description, setDescription] = useState("");
     const topicArticles = useHistory();

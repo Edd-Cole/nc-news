@@ -114,4 +114,21 @@ const postNewComment = (author, article_id, body) => {
     .then(response => response.json())
 }
 
-export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment};
+const editComment = (comment_id, currentComment) => {
+    console.log(typeof(comment_id), currentComment)
+    comment_id = parseInt(comment_id);
+    return fetch(`https://eddncnewsproject.herokuapp.com/api/comments/${comment_id}`, {
+        method: "PATCH",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify({body: currentComment})
+    }).then(response => response.json())
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment};

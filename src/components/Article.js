@@ -66,8 +66,8 @@ const Article = ({vote, setVote, article, setArticle, setCommentValue, commentVa
         <h2 className="articleHeading">{article.title}</h2>
         <Voting article={article} articles={[article]} setArticles={setArticle} setVote={setVote} vote={vote}/>
         </section>
-        <p>{article.author} - {article.created_at}</p>
-        <p>{article.body}</p>
+        <p className="articleAuthorCreation">{article.author} - {article.created_at}</p>
+        <p className="articleBody">{article.body}</p>
         <hr></hr>
         <span className="articleFooterInfo"><Link to={`/articles/${article_id}/comments`} onClick={() => setPage(1)}>{article.comment_count} comments </Link> &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; <Link to={`/?topic=${article.topic}`}>t/{article.topic}</Link></span>
         <section className="articleComments">

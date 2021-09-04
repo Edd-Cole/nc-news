@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import AddComment from "./AddComment";
+import EditComment from "./EditComment";
 import NextPage from "./NextPage";
 import PrevPage from "./PrevPage";
 import VotingComment from "./VotingComment";
 
-const Comments = ({article, setArticle, setVote, commentValue, setCommentValue, page, setPage}) => {
+const Comments = ({currentUser, article, setArticle, setVote, commentValue, setCommentValue, page, setPage}) => {
     const {article_id} = useParams();
     const [comments, setComments] = useState([])
    
@@ -58,7 +59,7 @@ const Comments = ({article, setArticle, setVote, commentValue, setCommentValue, 
             <hr />
             {comments.map(comment => {
                 return <section key={comment.comment_id} className="commentSection">
-                <VotingComment comment={comment} comments={comments} setComments={setComments} setCommentValue={setCommentValue}/>
+                <VotingComment currentUser={currentUser} comment={comment} comments={comments} setComments={setComments} setCommentValue={setCommentValue}/>
                 </section>
             })}
             <PrevPage page={page} setPage={setPage}/>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Topics = () => {
+const Topics = ({currentUser}) => {
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const Topics = () => {
     return (
         <section>
             <h2>Topics</h2>
-            <Link to="/topics/create_new_topic">Create a new Topic</Link>
+            {currentUser && <Link to="/topics/create_new_topic">Create a new Topic</Link>}
             <hr></hr>
             {topics.map(topic => {
                 return (
