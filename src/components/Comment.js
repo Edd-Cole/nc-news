@@ -54,7 +54,7 @@ const Comments = ({currentUser, article, setArticle, setVote, commentValue, setC
     return (
         <section>
             <h2>{article.title}</h2>
-            <AddComment article_id={article_id}/><br /><br />
+            <AddComment currentUser={currentUser} article_id={article_id}/><br /><br />
             <Link to={`/articles/${article_id}`}>Back to Article</Link>
             <hr />
             {comments.map(comment => {

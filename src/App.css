@@ -4,6 +4,16 @@
 
 button {
     cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: orange;
+    border: 1px solid darkorange;
+    color: white;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: darkorange;
 }
 
 h1 {
@@ -61,6 +71,7 @@ Header p {
     width: 150px;
     text-align: left;
     font-size: 14px;
+    color: black;
 }
 
 .NavBar {

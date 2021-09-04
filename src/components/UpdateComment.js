@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { editComment } from "../utils";
 
-const UpdateComment = () => {
-    const [currentComment, setCurrentComment] = useState("");
+const UpdateComment = ({currentComment, setCurrentComment}) => {
     const {comment_id} = useParams();
     const redirect = useHistory();
 

@@ -18,6 +18,7 @@ import CreateComment from './components/CreateComment';
 import LoggedInAsUser from './components/LoggedInAsUser';
 import NullPage from './components/NullPage';
 import UpdateComment from './components/UpdateComment';
+import SoloCommment from './components/SoloComment';
 
 function App() {
     const [currentUser, setCurrentUser] = useState("grumpy19")
@@ -28,6 +29,9 @@ function App() {
     const [searchQuery, setSearchQuery] = useState("")
     const [page, setPage] = useState(1);
     const [username, setUsername] = useState("");
+    const [currentComment, setCurrentComment] = useState("");
+
+    console.log(currentUser)
 
   return (
     <section className="App">
@@ -35,7 +39,7 @@ function App() {
         <Nav setPage={setPage}/>
         <Switch>
             <Route exact path="/">
-                <Home articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery} page={page} setPage={setPage}/>
+                <Home articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery} page={page} setPage={setPage} currentUser={currentUser}/>
             </Route>
             <Route exact path="/users">
                 <Users />
@@ -55,12 +59,13 @@ function App() {
                 {/* </LoggedInAsUser> */}
             </Route>
             <Route exact path="/articles/:article_id/comments/create_new_comment">
-                {/* <LoggedInAsUser currentUser={currentUser}> */}
+                <LoggedInAsUser currentUser={currentUser}>
+                    <NullPage />
                     <CreateComment currentUser={currentUser}/>
-                {/* </LoggedInAsUser> */}
+                </LoggedInAsUser>
             </Route>
             <Route exact path="/articles/:article_id">
-                <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} setPage={setPage}/>
+                <Article article={article} setArticle={setArticle} vote={vote} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} setPage={setPage} currentUser={currentUser}/>
             </Route>
             <Route exact path="/articles/:article_id/comments">
                 <Comments currentUser={currentUser} articles={articles} article={article} setArticle={setArticle} setVote={setVote} commentValue={commentValue} setCommentValue={setCommentValue} page={page} setPage={setPage}/>
@@ -78,7 +83,10 @@ function App() {
                 </LoggedInAsUser>
             </Route>
             <Route exact path="/comments/:comment_id/edit">
-                <UpdateComment />
+                <UpdateComment currentComment={currentComment} setCurrentComment={setCurrentComment}/>
+            </Route>
+            <Route exact path="/comments/:comment_id">
+                <SoloCommment currentComment={currentComment}/>
             </Route>
         </Switch>
     </section>

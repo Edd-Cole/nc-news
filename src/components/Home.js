@@ -7,9 +7,7 @@ import NextPage from "./NextPage";
 import PrevPage from "./PrevPage";
 import Voting from "./Voting"
 
-const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSearchQuery, page, setPage}) => {
-    console.log(article)
-    console.log(articles)
+const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSearchQuery, page, setPage, currentUser}) => {
     const {search} = useLocation()
     if(search) {
         let value = extractSearchValue(search);
@@ -46,7 +44,7 @@ const Home = ({articles, setArticles, vote, setVote, article, searchQuery, setSe
 
     return (
         <section className="homePage">
-            <AddArticle />
+            <AddArticle currentUser={currentUser}/>
             <ul>
                 {articles.map(article => {
                     const commentLink = `/articles/${article.article_id}/comments`;

@@ -5,7 +5,7 @@ import AddComment from "./AddComment"
 import Voting from "./Voting"
 import VotingComment from "./VotingComment"
 
-const Article = ({vote, setVote, article, setArticle, setCommentValue, commentValue, setPage}) => {
+const Article = ({vote, setVote, article, setArticle, setCommentValue, commentValue, setPage, currentUser}) => {
     const {article_id} = useParams();
     let [comment, setComment] = useState({});
 
@@ -75,7 +75,7 @@ const Article = ({vote, setVote, article, setArticle, setCommentValue, commentVa
         <hr></hr>
         <VotingComment comment={comment} comments={[comment]} setComments={setComment} setCommentValue={setCommentValue}/>
         <br></br>
-        <AddComment article_id={article_id}/>
+        <AddComment currentUser={currentUser} article_id={article_id}/>
         <br /><br />
         <Link to={`/articles/${article_id}/comments`}>More comments...</Link>
         <br></br>
