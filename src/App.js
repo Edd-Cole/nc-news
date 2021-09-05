@@ -32,8 +32,6 @@ function App() {
     const [username, setUsername] = useState("");
     const [currentComment, setCurrentComment] = useState("");
 
-    console.log(currentUser)
-
   return (
     <section className="App">
         <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>
