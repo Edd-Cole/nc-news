@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import LogOut from "./LogOut";
 import Voting from "./Voting";
+import EditUser from "./EditUser";
 
-const Username = ({articles, setArticles, vote, setVote, article, searchQuery, setSearchQuery, page, setPage}) => {
+const Username = ({vote, setVote, setPage, currentUser, setCurrentUser}) => {
     const [user, setUser] = useState({})
     const [userArticles, setUserArticles] = useState([])
     const {username} = useParams();
@@ -20,6 +22,11 @@ const Username = ({articles, setArticles, vote, setVote, article, searchQuery, s
 
         return (
             <section>
+                {currentUser === user.username ? <h2>Hello, {user.name}!</h2> : null}
+                {currentUser === user.username ? <LogOut setCurrentUser={setCurrentUser} /> : null}
+                <br />
+                {currentUser === user.username ? <EditUser currentUser={currentUser} /> : null}
+                <br /><br />
                 <Link to="/users">Back to Users</Link>
                 <h2>{user.username}</h2>
                 <br></br>

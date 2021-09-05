@@ -16,6 +16,10 @@ button:hover {
     background-color: darkorange;
 }
 
+a {
+    color: orangered;
+}
+
 h1 {
     color: darkorange;
 }
@@ -99,7 +103,7 @@ Header p {
     box-sizing: border-box;
     box-shadow: -5px 5px 10px gray;
     z-index: 0;
-    background-color: lightcyan;
+    background-color: #fed8b1;
 }
 
 .homePage ul {

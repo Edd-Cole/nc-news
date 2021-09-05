@@ -19,6 +19,7 @@ import LoggedInAsUser from './components/LoggedInAsUser';
 import NullPage from './components/NullPage';
 import UpdateComment from './components/UpdateComment';
 import SoloCommment from './components/SoloComment';
+import UpdateUser from './components/UpdateUser';
 
 function App() {
     const [currentUser, setCurrentUser] = useState("grumpy19")
@@ -50,8 +51,11 @@ function App() {
             <Route exact path="/users/create_account_success">
                 <AccountCreationSuccess username={username}/>
             </Route>
+            <Route exact path="/users/:username/edit">
+                <UpdateUser currentUser={currentUser}/>
+            </Route>
             <Route exact path="/users/:username">
-                <Username articles={articles} setArticles={setArticles} vote={vote} setVote={setVote} article={article} searchQuery={searchQuery} setSearchQuery={setSearchQuery} page={page} setPage={setPage}/>
+                <Username vote={vote} setVote={setVote} article={article} setPage={setPage} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
             </Route>
             <Route exact path="/articles/create_new_article">
                 {/* <LoggedInAsUser currentUser={currentUser}> */}
