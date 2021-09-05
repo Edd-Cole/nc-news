@@ -148,4 +148,21 @@ const editUser = (username, firstName, lastName, avatar_url) => {
     .then(response => console.log(response))
 }
 
-export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment, editUser};
+const deleteUser = (username) => {
+    fetch(`https://eddncnewsproject.herokuapp.com/api/users/${username}`,{
+        method: "DELETE",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify()
+    })
+    .then(response => response.json())
+    .then(r => console.log(r))
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment, editUser, deleteUser};
