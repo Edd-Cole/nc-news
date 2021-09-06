@@ -1,14 +1,14 @@
 import { useState } from "react"
 import { Link } from "react-router-dom";
 
-const SoloCommment = ({currentComment}) => {
+const SoloCommment = ({currentComment, article}) => {
+    console.log(currentComment)
     return (
             <section>
-                <h2>{currentComment.title}</h2>
-                <Link to={`/articles/${currentComment.article_id}`}>Back to Article</Link>
+                <Link to={`/articles/${article.article_id}`}>Back to Article</Link>
+                <h2>Your new comment</h2>
                 <hr />
-                <h2>{currentComment.title}</h2>
-                <p>{currentComment.body}</p>
+                <p>{currentComment}</p>
             </section>
     )
 }

@@ -20,6 +20,7 @@ import NullPage from './components/NullPage';
 import UpdateComment from './components/UpdateComment';
 import SoloCommment from './components/SoloComment';
 import UpdateUser from './components/UpdateUser';
+import CommentDeleteMessage from './components/CommentDeleteMessage';
 
 function App() {
     const [currentUser, setCurrentUser] = useState("grumpy19")
@@ -32,7 +33,7 @@ function App() {
     const [username, setUsername] = useState("");
     const [currentComment, setCurrentComment] = useState("");
 
-  return (
+    return (
     <section className="App">
         <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         <Nav setPage={setPage}/>
@@ -62,8 +63,8 @@ function App() {
             </Route>
             <Route exact path="/articles/:article_id/comments/create_new_comment">
                 <LoggedInAsUser currentUser={currentUser}>
-                    <NullPage />
                     <CreateComment currentUser={currentUser}/>
+                    <NullPage />
                 </LoggedInAsUser>
             </Route>
             <Route exact path="/articles/:article_id">
@@ -84,11 +85,14 @@ function App() {
                     <LoginPage setCurrentUser={setCurrentUser}/>
                 </LoggedInAsUser>
             </Route>
+            <Route exact path="/comments/delete_message">
+                <CommentDeleteMessage article={article}/>
+            </Route>
             <Route exact path="/comments/:comment_id/edit">
                 <UpdateComment currentComment={currentComment} setCurrentComment={setCurrentComment}/>
             </Route>
             <Route exact path="/comments/:comment_id">
-                <SoloCommment currentComment={currentComment}/>
+                <SoloCommment currentComment={currentComment} article={article}/>
             </Route>
         </Switch>
     </section>

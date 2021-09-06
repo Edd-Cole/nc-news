@@ -162,7 +162,22 @@ const deleteUser = (username) => {
         body: JSON.stringify()
     })
     .then(response => response.json())
-    .then(r => console.log(r))
 }
 
-export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment, editUser, deleteUser};
+const deleteComment = (comment_id) => {
+    return fetch(`https://eddncnewsproject.herokuapp.com/api/comments/${comment_id}`,{
+        method: "DELETE",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify()
+    })
+    .then(response => response.json()) 
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment, editUser, deleteUser, deleteComment};

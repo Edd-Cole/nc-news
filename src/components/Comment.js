@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import AddComment from "./AddComment";
-import EditComment from "./EditComment";
+import DeleteComment from "./DeleteComment";
 import NextPage from "./NextPage";
 import PrevPage from "./PrevPage";
 import VotingComment from "./VotingComment";
@@ -59,6 +59,7 @@ const Comments = ({currentUser, article, setArticle, setVote, commentValue, setC
             <hr />
             {comments.map(comment => {
                 return <section key={comment.comment_id} className="commentSection">
+                {currentUser === comment.author ? <DeleteComment comment_id={comment.comment_id} setPage={setPage}/> : null}
                 <VotingComment currentUser={currentUser} comment={comment} comments={comments} setComments={setComments} setCommentValue={setCommentValue}/>
                 </section>
             })}
