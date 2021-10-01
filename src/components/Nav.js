@@ -6,6 +6,7 @@ const Nav = ({setPage}) => {
                 <NavLink to="/" activeClassName="currentNav" className="nav" onClick={() => setPage(1)}>Articles</NavLink>
                 <NavLink to="/topics" activeClassName="currentNav" className="nav" onClick={() => setPage(1)}>Topics</NavLink>
                 <NavLink to="/users" activeClassName="currentNav" className="nav" onClick={() => setPage(1)}>Users</NavLink>
+                <NavLink to="/comments" activeClassName="currentNav" className="nav" onClick={() => setPage(1)}>Comments</NavLink>
             </ul>
         </section>
     )
