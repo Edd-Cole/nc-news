@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom"
 import AddComment from "./AddComment"
+import DeleteArticle from "./DeleteArticle"
 import Voting from "./Voting"
 import VotingComment from "./VotingComment"
 
@@ -71,6 +72,7 @@ const Article = ({vote, setVote, article, setArticle, setCommentValue, commentVa
         <hr></hr>
         <span className="articleFooterInfo"><Link to={`/articles/${article_id}/comments`} onClick={() => setPage(1)}>{article.comment_count} comments </Link> &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; <Link to={`/?topic=${article.topic}`}>t/{article.topic}</Link></span>
         <section className="articleComments">
+        <DeleteArticle article_id={article_id}/>
         <h3>Top Comment:</h3>
         <hr></hr>
         <VotingComment comment={comment} comments={[comment]} setComments={setComment} setCommentValue={setCommentValue}/>

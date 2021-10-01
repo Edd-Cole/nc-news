@@ -180,4 +180,21 @@ const deleteComment = (comment_id) => {
     .then(response => response.json()) 
 }
 
-export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment, editUser, deleteUser, deleteComment};
+const deleteArticle = (article_id) => {
+    console.log("running delete article")
+    return fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}`, {
+        method: "DELETE",
+        mode: "cors",
+        cahce: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify()
+    })
+    .then(response => response.json())
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment, editUser, deleteUser, deleteComment, deleteArticle};
