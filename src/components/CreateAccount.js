@@ -2,9 +2,10 @@ import { useState } from "react"
 import { useHistory } from "react-router";
 import { postNewUser } from "../utils";
 
-const CreateAccount = ({username, setUsername}) => {
+const CreateAccount = ({setCurrentUser}) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [avatarURL, setAvatarURL] = useState("");
     const history = useHistory()
@@ -22,6 +23,7 @@ const CreateAccount = ({username, setUsername}) => {
                     if(error.code === 400) {
                         document.getElementById("createAccountFailureMessage").innerHTML = "Sorry, that username is already taken..."
                     } else {
+                        setCurrentUser(username)
                         redirectSuccess()
                     }
                 })}}>

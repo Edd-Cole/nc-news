@@ -45,7 +45,7 @@ function App() {
                 <Users />
             </Route>
             <Route exact path="/users/create_an_account">
-                <CreateAccount username={username} setUsername={setUsername}/>
+                <CreateAccount setCurrentUser={setCurrentUser} username={username} setUsername={setUsername}/>
             </Route>
             <Route exact path="/users/create_account_success">
                 <AccountCreationSuccess username={username}/>
