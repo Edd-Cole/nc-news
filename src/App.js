@@ -21,6 +21,7 @@ import UpdateComment from './components/UpdateComment';
 import SoloCommment from './components/SoloComment';
 import UpdateUser from './components/UpdateUser';
 import CommentDeleteMessage from './components/CommentDeleteMessage';
+import AllComments from './components/Comments.js';
 
 function App() {
     const [currentUser, setCurrentUser] = useState("grumpy19")
@@ -84,6 +85,9 @@ function App() {
                     <NullPage />
                     <LoginPage setCurrentUser={setCurrentUser}/>
                 </LoggedInAsUser>
+            </Route>
+            <Route exact path="/comments">
+                <AllComments currentUser={currentUser} page={page} setPage={setPage} setCommentValue={setCommentValue}/>
             </Route>
             <Route exact path="/comments/delete_message">
                 <CommentDeleteMessage article={article}/>
