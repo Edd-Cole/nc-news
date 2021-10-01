@@ -11,10 +11,8 @@
 
 
 - Edit a topic
-- Delete a user
-- Delete an article
-- Delete a comment
+
 - Get all comments in database
-- Deploy site
+
 - Bind stuff to a logged in user
 - change favicon and title on tab
