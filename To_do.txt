@@ -10,7 +10,7 @@
 
 
 
-- Edit a topic
+- Edit a topic // bug
 
 - Get all comments in database
 

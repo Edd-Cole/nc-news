@@ -3,4 +3,5 @@
 3. Comment vote counter not vertically centred
 4. Comment vote counter increments when switching between article and its comments --> extract useEffect for patch into commentVote
 5. trying to vote on a new comment erases the comment
-6. Comments don't flex to match the size of the text. 
+6. Comments don't flex to match the size of the text.
+7. Edit topic button does not update the topic description
