@@ -194,8 +194,10 @@ Header p {
 }
 
 .commentSection {
-    position:static;
-    border: black solid 1px;    
+    position: static;
+    border: black solid 1px;  
+    height: auto;
+    min-height: 200px;  
 }
 
 .commentVotesForm {
@@ -219,6 +221,7 @@ Header p {
     border: 1px solid black;
     width: 90%;
     min-height: 124px;
+    height: auto;
 }
 
 .commentInfo h3 {
