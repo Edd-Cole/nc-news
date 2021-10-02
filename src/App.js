@@ -58,9 +58,7 @@ function App() {
                 <Username vote={vote} setVote={setVote} article={article} setPage={setPage} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
             </Route>
             <Route exact path="/articles/create_new_article">
-                {/* <LoggedInAsUser currentUser={currentUser}> */}
                     <CreateArticle currentUser={currentUser}/>
-                {/* </LoggedInAsUser> */}
             </Route>
             <Route exact path="/articles/:article_id/comments/create_new_comment">
                 <LoggedInAsUser currentUser={currentUser}>
