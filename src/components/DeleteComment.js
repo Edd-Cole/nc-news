@@ -6,7 +6,7 @@ const DeleteComment = ({comment_id}) => {
     return (
         <button onClick={() => {
             deleteComment(comment_id)
-            redirect.push("/comments/delete_message")
+            redirect.push("/")
         }}>Delete</button>
     )
 }

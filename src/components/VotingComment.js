@@ -1,7 +1,8 @@
 import EditComment from "./EditComment"
+import DeleteComment from "./DeleteComment"
 const {commentVote} = require("../utils")
 
-const VotingComment = ({currentUser,comment, comments, setComments, setCommentValue}) => {
+const VotingComment = ({currentUser,comment, comments, setComments, setCommentValue, setPage={setPage}}) => {
     if(comment === undefined) return <p>No comments yet, be the first...</p>
 return  (
     <section className="commentSection">
@@ -21,6 +22,7 @@ return  (
         <section className="commentInfo">
             <h3>{comment.author}</h3>
             <EditComment currentUser={currentUser} author={comment.author} comment_id={comment.comment_id}/>
+            {currentUser === comment.author ? <DeleteComment comment_id={comment.comment_id} setPage={setPage}/> : null}
             <p>{comment.body}</p>
         </section>
     </section>)

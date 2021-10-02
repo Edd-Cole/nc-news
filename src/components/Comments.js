@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import DeleteComment from "./DeleteComment";
 import PrevPage from "./PrevPage";
 import VotingComment from "./VotingComment";
 import NextPage from "./NextPage";
@@ -13,7 +12,6 @@ const AllComments = ({currentUser, page, setPage, setCommentValue}) => {
             return comments.json();
         })
         .then(({comments}) => {
-            console.log(comments)
             setAllComments( comments )
         })
     }, [])
@@ -23,8 +21,7 @@ const AllComments = ({currentUser, page, setPage, setCommentValue}) => {
             <hr />
             {allComments.map(comment => {
                 return <section key={comment.comment_id} className="commentSection">
-                {currentUser === comment.author ? <DeleteComment comment_id={comment.comment_id} setPage={setPage}/> : null}
-                <VotingComment currentUser={currentUser} comment={comment} comments={allComments} setComments={setAllComments} setCommentValue={setCommentValue}/>
+                <VotingComment currentUser={currentUser} comment={comment} comments={allComments} setComments={setAllComments} setCommentValue={setCommentValue} setPage={setPage}/>
                 </section>
             })}
             <PrevPage page={page} setPage={setPage}/>
