@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import EditTopic from "./EditTopic";
 
 const Topics = ({currentUser}) => {
     const [topics, setTopics] = useState([]);
@@ -19,6 +20,7 @@ const Topics = ({currentUser}) => {
                 return (
                     <section>
                     <h3><Link to={`/?topic=${topic.slug}`}>{topic.slug}</Link></h3>
+                    <EditTopic slug={topic.slug}/>
                     <p>{topic.description}</p>
                     <hr></hr>
                     </section>

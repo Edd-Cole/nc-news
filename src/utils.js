@@ -145,7 +145,6 @@ const editUser = (username, firstName, lastName, avatar_url) => {
         body: JSON.stringify({firstName, lastName, avatar_url})
     })
     .then(response => response.json())
-    .then(response => console.log(response))
 }
 
 const deleteUser = (username) => {
@@ -181,11 +180,10 @@ const deleteComment = (comment_id) => {
 }
 
 const deleteArticle = (article_id) => {
-    console.log("running delete article")
     return fetch(`https://eddncnewsproject.herokuapp.com/api/articles/${article_id}`, {
         method: "DELETE",
         mode: "cors",
-        cahce: "no-cache",
+        cache: "no-cache",
         credentials: "same-origin",
         headers: {
             "Content-Type": "application/json"
@@ -197,4 +195,24 @@ const deleteArticle = (article_id) => {
     .then(response => response.json())
 }
 
-export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment, editUser, deleteUser, deleteComment, deleteArticle};
+const editTopic = (slug, description) => {
+    return fetch(`https://eddncnewsproject.herokuapp.com/api/topics/${slug}`, {
+        method: "PATCH",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify({
+            description: description
+        })
+    })
+    .then(response => {
+        return response.json()
+    })
+}
+
+export {createNew, voteArticle, commentVote, extractSearchValue, postNewUser, postNewTopic, postNewArticle, postNewComment, editComment, editUser, deleteUser, deleteComment, deleteArticle, editTopic};

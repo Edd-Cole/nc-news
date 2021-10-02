@@ -22,6 +22,7 @@ import SoloCommment from './components/SoloComment';
 import UpdateUser from './components/UpdateUser';
 import CommentDeleteMessage from './components/CommentDeleteMessage';
 import AllComments from './components/Comments.js';
+import UpdateTopic from './components/UpdateTopic';
 
 function App() {
     const [currentUser, setCurrentUser] = useState("grumpy19")
@@ -77,6 +78,9 @@ function App() {
             </Route>
             <Route exact path="/topics/create_new_topic">
                     <CreateTopic currentUser={currentUser}/>
+            </Route>
+            <Route exact path="/topics/:slug/edit">
+                <UpdateTopic />
             </Route>
             <Route exact path="/loginpage">
                 <LoggedInAsUser currentUser={currentUser}>
