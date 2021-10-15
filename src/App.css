@@ -270,3 +270,50 @@ padding: 0px 0px 0px 0px;
     display: inline-flex;
     text-align: center;
 }
+
+@media screen and (min-width: 1000px) {
+    .companyName {
+        position: absolute;
+        font-size: 3em;
+        left: 0px;
+        right: 0px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    Header p {
+        position: absolute;
+        margin: 0px auto;
+        width: 150px;
+        text-align: left;
+        font-size: 14px;
+        color: black;
+        left: 0px;
+        right: 0px;
+        margin-right: auto;
+        margin-left: auto;
+        top: 90px;
+        
+    }
+
+    .articleHomepage {
+        position: relative;
+        margin: 30px auto;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 10px;
+        height: 150px;
+        box-sizing: border-box;
+        box-shadow: -5px 5px 10px gray;
+        z-index: 0;
+        background-color: #fed8b1;
+        max-width: 900px;
+    }
+
+    .NavBar .nav {
+        position: relative;
+        text-decoration: none;
+        top: 10px;
+        color: darkorange;
+    }   
+}
