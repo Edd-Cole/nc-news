@@ -17,6 +17,8 @@ const UpdateTopic = () => {
         })
     }, [])
 
+    console.log(description)
+
     return (
         <section>
             <h2>Edit your topic</h2>

@@ -196,6 +196,7 @@ const deleteArticle = (article_id) => {
 }
 
 const editTopic = (slug, description) => {
+    console.log(description)
     return fetch(`https://eddncnewsproject.herokuapp.com/api/topics/${slug}`, {
         method: "PATCH",
         mode: "cors",
@@ -206,9 +207,7 @@ const editTopic = (slug, description) => {
         },
         redirect: "follow",
         referrerPolicy: "no-referrer",
-        body: JSON.stringify({
-            description: description
-        })
+        body: JSON.stringify(description)
     })
     .then(response => {
         return response.json()

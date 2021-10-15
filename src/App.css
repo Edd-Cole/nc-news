@@ -64,7 +64,6 @@ h1 {
 Header {
     display: block;
     position:static;
-    border: 2px black solid;
     height: 100px;
 }
 
@@ -76,10 +75,6 @@ Header p {
     text-align: left;
     font-size: 14px;
     color: black;
-}
-
-.NavBar {
-    border: 2px black solid;
 }
 
 .NavBar .nav {
@@ -95,7 +90,7 @@ Header p {
 
 .articleHomepage {
     position: relative;
-    margin: 10px;
+    margin: 10px auto;
     padding: 5px;
     border: 1px solid black;
     border-radius: 10px;
@@ -104,6 +99,7 @@ Header p {
     box-shadow: -5px 5px 10px gray;
     z-index: 0;
     background-color: #fed8b1;
+    max-width: 600px;
 }
 
 .homePage ul {
@@ -114,11 +110,11 @@ Header p {
 .articleHomepage .articleVotesForm {
     width: 60px;
     height: 120px;
-    position:inherit;
-    left: 275px; 
+    position: absolute;
+    right: 0px; 
     margin: 0px;
     box-sizing: border-box;
-    bottom: 5px;
+    top: 2px;
     z-index: 1;
 }
 
@@ -142,7 +138,7 @@ Header p {
     top: 0px;
     left: 0px;
     text-align: left;
-    width: 270px;
+    max-width: 300px;
     height: auto;
 }
 
