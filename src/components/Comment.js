@@ -52,15 +52,15 @@ const Comments = ({currentUser, article, setArticle, setVote, commentValue, setC
     }, [commentValue])
 
     return (
-        <section>
+        <section className="commentsSection">
             <h2>{article.title}</h2>
             <AddComment currentUser={currentUser} article_id={article_id}/><br /><br />
             <Link to={`/articles/${article_id}`}>Back to Article</Link>
             <hr />
             {comments.map(comment => {
                 return <section key={comment.comment_id} className="commentSection">
-                {currentUser === comment.author ? <DeleteComment comment_id={comment.comment_id} setPage={setPage}/> : null}
                 <VotingComment currentUser={currentUser} comment={comment} comments={comments} setComments={setComments} setCommentValue={setCommentValue}/>
+                {/* {currentUser === comment.author ? <DeleteComment comment_id={comment.comment_id} setPage={setPage}/> : null} */}
                 </section>
             })}
             <PrevPage page={page} setPage={setPage}/>

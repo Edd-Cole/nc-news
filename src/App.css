@@ -191,14 +191,13 @@ Header p {
 
 .commentSection {
     position: static;
-    border: black solid 1px;  
     height: auto;
     min-height: 200px;  
+    border-bottom: 1px black solid;
 }
 
 .commentVotesForm {
     display: flex-inline;
-    border: black 1px solid;
     position: absolute;
     right: 0px;
     padding: auto;
@@ -214,7 +213,6 @@ Header p {
 }
 
 .commentInfo {
-    border: 1px solid black;
     width: 90%;
     min-height: 124px;
     height: auto;
@@ -312,7 +310,6 @@ padding: 0px 0px 0px 0px;
         position: relative;
         margin: 30px auto;
         padding: 5px;
-        border: 1px solid black;
         border-radius: 10px;
         height: 150px;
         box-sizing: border-box;
@@ -349,5 +346,41 @@ padding: 0px 0px 0px 0px;
         right: 0px;
         margin-left: auto;
         margin-right: auto; */
+    }
+
+    .commentSection {
+        position: static;
+        height: auto;
+        min-height: 200px;  
+        border-bottom: 1px black solid;
+    }
+
+    .commentSection h3 {
+        margin-left: 10%;
+    }
+
+    .commentSection p {
+        margin-left: 10%;
+    }
+
+    .commentSection .commentVotesForm {
+        margin-right : 10%;
+    }
+
+    .articleSection h2 {
+        margin-left: 10%;
+    }
+
+    .articleSection p {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .articleSection .commentVotesForm {
+        margin-right: 10%;
+    }
+
+    .articleSection .articleVotesForm {
+        margin-right: 10%;
     }
 }

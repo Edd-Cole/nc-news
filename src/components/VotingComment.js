@@ -2,7 +2,7 @@ import EditComment from "./EditComment"
 import DeleteComment from "./DeleteComment"
 const {commentVote} = require("../utils")
 
-const VotingComment = ({currentUser,comment, comments, setComments, setCommentValue, setPage={setPage}}) => {
+const VotingComment = ({currentUser,comment, comments, setComments, setCommentValue, setPage}) => {
     if(comment === undefined) return <p>No comments yet, be the first...</p>
 return  (
     <section className="commentSection">

@@ -17,7 +17,7 @@ const AllComments = ({currentUser, page, setPage, setCommentValue}) => {
     }, [])
 
     return (
-        <section>
+        <section className="commentsSection">
             <hr />
             {allComments.map(comment => {
                 return <section key={comment.comment_id} className="commentSection">
