@@ -271,6 +271,18 @@ padding: 0px 0px 0px 0px;
     text-align: center;
 }
 
+.NavBar ul {
+    list-style-type: none;
+    list-style: none;
+    display: inline-flex;
+    width: 700px;
+    float: center;
+}
+
+.NavBar ul li {
+    width: 10%;
+}
+
 @media screen and (min-width: 1000px) {
     .companyName {
         position: absolute;
@@ -308,6 +320,19 @@ padding: 0px 0px 0px 0px;
         z-index: 0;
         background-color: #fed8b1;
         max-width: 900px;
+        margin-top: 20px;
+    }
+
+    .NavBar ul {
+        list-style-type: none;
+        list-style: none;
+        display: inline-flex;
+        width: 700px;
+        float: center;
+    }
+
+    .NavBar ul li {
+        width: 50%;
     }
 
     .NavBar .nav {
@@ -316,4 +341,13 @@ padding: 0px 0px 0px 0px;
         top: 10px;
         color: darkorange;
     }   
+
+    .NavBar {
+        margin: 20px 0px;
+        /* position:absolute; */
+        /* left: 0px;
+        right: 0px;
+        margin-left: auto;
+        margin-right: auto; */
+    }
 }
